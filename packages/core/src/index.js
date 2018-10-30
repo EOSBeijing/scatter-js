@@ -44,7 +44,7 @@ class Index {
             }, 3000);
 
             Promise.race([
-                checkForExtension(resolve),
+                // checkForExtension(resolve),
                 SocketService.ping().then(found => {
                     if(found) resolve(true);
                 })
@@ -65,7 +65,7 @@ class Index {
             }, options.initTimeout);
 
             // Defaults to scatter extension if exists
-            checkForExtension(resolve);
+            // checkForExtension(resolve);
 
             // Tries to set up Desktop Connection
             SocketService.init(pluginName, options.linkTimeout);
@@ -200,6 +200,15 @@ class Index {
         throwNoAuth();
         return SocketService.sendApiRequest({
             type:'requestSignature',
+            payload
+        });
+    }
+
+    getEncryptionKey(fromPublicKey, toPublicKey, nonce){
+        throwNoAuth();
+        const payload = {fromPublicKey, toPublicKey, nonce};
+        return SocketService.sendApiRequest({
+            type:'getEncryptionKey',
             payload
         });
     }
