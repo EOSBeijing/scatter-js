@@ -245,16 +245,16 @@ let holder = new Holder(new Index());
 if(typeof window !== 'undefined') {
 
     // Catching extension instead of Desktop
-    if(typeof document !== 'undefined'){
-        const bindScatterClassic = () => {
-            holder.scatter = window.scatter;
-            holder.scatter.isExtension = true;
-            holder.scatter.connect = () => new Promise(resolve => resolve(true));
-        };
+    // if(typeof document !== 'undefined'){
+    //     const bindScatterClassic = () => {
+    //         holder.scatter = window.scatter;
+    //         holder.scatter.isExtension = true;
+    //         holder.scatter.connect = () => new Promise(resolve => resolve(true));
+    //     };
 
-        if(typeof window.scatter !== 'undefined') bindScatterClassic();
-        else document.addEventListener('scatterLoaded', () => bindScatterClassic());
-    }
+    //     if(typeof window.scatter !== 'undefined') bindScatterClassic();
+    //     else document.addEventListener('scatterLoaded', () => bindScatterClassic());
+    // }
 
     window.ScatterJS = holder;
 }
